@@ -148,10 +148,9 @@ Clear-Host
 Write-Output "Getting image information:"
 $ImagesIndex = (Get-WindowsImage -ImagePath $ScratchDisk\tiny11\sources\install.wim).ImageIndex
 while ($ImagesIndex -notcontains $index) {
-   Get-WindowsImage -ImagePath $ScratchDisk\tiny11\sources\install.wim
-   $index = "6"
+    Get-WindowsImage -ImagePath $ScratchDisk\tiny11\sources\install.wim
+    $index = Read-Host "Please enter the image index"
 }
-
 Write-Output "Mounting Windows image. This may take a while."
 $wimFilePath = "$ScratchDisk\tiny11\sources\install.wim"
 & takeown "/F" $wimFilePath
